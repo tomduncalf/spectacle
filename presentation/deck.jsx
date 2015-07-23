@@ -159,13 +159,91 @@ export default class extends React.Component {
         <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
           <Heading size={3} textColor="primary">Frameworks: Intro</Heading>
           <List>
-            <ListItem>ES6 is the newest Javascript standard (currently on ES5 - 2009)</ListItem>
-            <ListItem>Also known as "ECMAScript Harmony", "ES2015" or "ES.next"</ListItem>
-            <ListItem>New features and syntax to make writing complex apps easier (particularly async code and modularity)</ListItem>
-            <ListItem>Maintains backwards compatibility (even the bad bits)</ListItem>
-            <ListItem>Standardised in June 2015, many features rolling out now</ListItem>
-            <Image src={images.compatibility.replace('/','')} width="80%" margin="10px 10% 0 10%"></Image>
-            <ListItem>Can use it <strong>today</strong> (more later)</ListItem>
+            <Appear fid="1">
+              <ListItem>Early JS frameworks were low level, imperative (Prototype, jQuery)</ListItem>
+              <ListItem>Designed to work around browser bugs, DOM API, do animations...</ListItem>
+              <ListItem>Now assumed as a baseline and/or handled in-browser (e.g. CSS transitions, fetch, querySelector)</ListItem>
+            </Appear>
+            <Appear fid="2">
+              <ListItem>Current trend is for frameworks to work at a higher level and be more declarative (e.g. Angular, Ember)</ListItem>
+              <ListItem>Aim to solve common problems for web apps e.g. data binding, MVC, routing,   reusable components</ListItem>
+            </Appear>
+          </List>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Frameworks: Example</Heading>
+          <Appear fid="1">
+            <Heading size={6} textColor="primary">jQuery</Heading>
+              <Layout>
+                <Fill>
+                  <CodePane lang="html" source={require("raw!./code/framework-jq-html.code")} padding="0 10px 0 0"></CodePane>
+                </Fill>
+                <Fill>
+                  <CodePane lang="javascript" source={require("raw!./code/framework-jq-js.code")} padding="0 0 0 10px"></CodePane>
+                </Fill>
+              </Layout>
+            </Appear>
+            <Appear fid="2">
+              <Heading size={6} textColor="primary">Angular</Heading>
+              <CodePane lang="html" source={require("raw!./code/framework-angular-html.code")} padding="0 0 10px 0"></CodePane>
+              <CodePane lang="javascript" source={require("raw!./code/framework-angular-js.code")} padding="0"></CodePane>
+            </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Frameworks: Angular</Heading>
+          <Appear fid="1">
+            <List>
+              <ListItem>Framework for creating rich web apps</ListItem>
+              <ListItem>MVC, Templating with 2-way data binding and expression language</ListItem>
+              <ListItem>Directives (reusable components)</ListItem>
+              <ListItem>Routing, Forms, Services</ListItem>
+              <ListItem>Unit testing, Dependency injection</ListItem>
+            </List>
+          </Appear>
+          <Appear fid="2">
+            <Text textColor="primary">Which is great, but...</Text>
+          </Appear>
+          <Appear fid="3">
+            <List>
+              <ListItem>Lots of new concepts and syntax (e.g. ng-repeat, not foreach)</ListItem>
+              <ListItem>Hidden complexity and performance issues</ListItem>
+              <ListItem>Shared scope can lead to state scattered all over the app</ListItem>
+            </List>
+          </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Frameworks: React</Heading>
+          <Appear fid="1">
+            <List>
+              <ListItem>Facebook's library for building UIs (mainly the V in MVC)</ListItem>
+              <ListItem>Based around components (but not Web Components)</ListItem>
+            </List>
+          </Appear>
+          <Appear fid="2">
+            <List>
+              <ListItem>Simple API</ListItem>
+              <ListItem>Use Javascript constructs rather than bespoke concepts</ListItem>
+              <ListItem>One way data flow, explicit state updates</ListItem>
+              <ListItem>Virtual DOM with diffing</ListItem>
+              <ListItem>Logic and template live in the same JS file - JSX</ListItem>
+              <ListItem>Not restricted to DOM e.g. <Link href="https://facebook.github.io/react-native/">React Native</Link></ListItem>
+            </List>
+          </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Frameworks: React</Heading>
+          <CodePane lang="javascript" source={require("raw!./code/framework-react.code")} padding="0 0 10px 0"></CodePane>
+          <Link href="https://jsfiddle.net/6La6fm74/1/">https://jsfiddle.net/6La6fm74/1/</Link>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Frameworks: Libraries</Heading>
+          <List>
+            <ListItem>Trend seems to be somewhat moving away from monolithic frameworks (e.g. Angular) towards smaller libraries</ListItem>
+            <ListItem>Functional programming approaches gaining popularity</ListItem>
+            <ListItem><Link href="https://facebook.github.io/react/">React</Link></ListItem>
+            <ListItem><Link href="https://facebook.github.io/immutable-js/">ImmutableJS</Link> - rich immutable collections API</ListItem>
+            <ListItem><Link href="https://github.com/Reactive-Extensions/RxJS">RxJS</Link>, <Link href="https://baconjs.github.io/">Bacon.js</Link>, <Link href="https://github.com/paldepind/flyd">Flyd</Link> - functional reactive programming</ListItem>
+            <ListItem><Link href="http://ramdajs.com/0.17/index.html">Ramda</Link> - functional programming library</ListItem>
           </List>
         </Slide>
 

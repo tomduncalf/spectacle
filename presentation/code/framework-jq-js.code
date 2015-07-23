@@ -1,0 +1,9 @@
+let names = ['Tom', 'Dick', 'Harry'];
+
+$('#search').onChange(search => {
+  $('#names').html(
+    names.filter(n => n.indexOf(search) > -1)
+         .map(name => '<li>' + name + '</li>')
+         .join()
+  );
+});

@@ -1,0 +1,23 @@
+class NameSearch extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { search: '' };
+    }
+
+    search(event) {
+        this.setState({ search: event.target.value });
+    }
+
+    render() {
+        var filteredNames = this.props.names.filter(name =>
+            name.indexOf(this.state.search) > -1);
+
+        return <div>
+            Enter name: <input onChange={this.search.bind(this)}/>
+            <ul>{filteredNames.map(name => <li>{name}</li>)}</ul>
+        </div>;
+    }
+}
+
+React.render(<NameSearch names={['Tom', 'Dick', 'Harry']} />,
+  document.getElementById('container'));

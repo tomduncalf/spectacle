@@ -1,0 +1,2 @@
+Enter name: <input id="search"/>
+<ul id="names"></ul>

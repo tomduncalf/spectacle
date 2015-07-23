@@ -1,0 +1,4 @@
+Enter name: <input ng-model="search"/>
+<ul>
+  <li ng-repeat="name in names | filter: search">{{ name }}</li>
+</ul>
