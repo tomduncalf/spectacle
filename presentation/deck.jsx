@@ -10,6 +10,7 @@ import preloader from "../src/utils/preloader";
 const images = {
   compatibility: require("./images/compatibility.png"),
   babel: require("./images/babel.png"),
+  npm: require("./images/npm.png"),
 };
 
 export default class extends React.Component {
@@ -221,11 +222,12 @@ export default class extends React.Component {
           </Appear>
           <Appear fid="2">
             <List>
-              <ListItem>Simple API</ListItem>
-              <ListItem>Use Javascript constructs rather than bespoke concepts</ListItem>
+              <ListItem>Simple API, less magic</ListItem>
+              <ListItem>Use plain Javascript rather than bespoke concepts</ListItem>
               <ListItem>One way data flow, explicit state updates</ListItem>
               <ListItem>Virtual DOM with diffing</ListItem>
               <ListItem>Logic and template live in the same JS file - JSX</ListItem>
+              <ListItem>Rendering is a pure function of component's state and props</ListItem>
               <ListItem>Not restricted to DOM e.g. <Link href="https://facebook.github.io/react-native/">React Native</Link></ListItem>
             </List>
           </Appear>
@@ -247,12 +249,189 @@ export default class extends React.Component {
           </List>
         </Slide>
 
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={1} fit caps textColor="black">
+            Compile-to-JS languages
+          </Heading>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Compile-to-JS: Intro</Heading>
+          <Appear fid="1">
+            <List>
+              <ListItem>Compile-to-JS languages are becoming more popular</ListItem>
+              <ListItem>Workflow can be quite smooth with source maps, good build tools</ListItem>
+              <ListItem>Range from supersets of JS with additional features, through ports of existing languages, all the way to entirely new languages</ListItem>
+              <ListItem>JavaScript is becoming the "universal runtime"</ListItem>
+              <ListItem><Link href="https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-JS">https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-JS</Link></ListItem>
+            </List>
+          </Appear>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">TypeScript and Flow</Heading>
+          <List>
+            <ListItem>Both add strong typing to Javascript</ListItem>
+            <ListItem>Static type checker run as part of build process, IDE integration</ListItem>
+            <Appear fid="1">
+              <ListItem><Link href="http://www.typescriptlang.org/">TypeScript</Link> is created by Microsoft, being used by Angular 2</ListItem>
+              <ListItem>Third party libraries need type interfaces: <Link href="https://github.com/borisyankov/DefinitelyTyped">Github Repo</Link></ListItem>
+            </Appear>
+            <Appear fid="2">
+              <ListItem><Link href="http://flowtype.org/">Flow</Link> is created by Facebook</ListItem>
+              <ListItem>Supports gradual typing: only need to use types where you want to</ListItem>
+            </Appear>
+            <Appear fid="3">
+              <ListItem>Very similar - <Link href="http://www.reddit.com/r/javascript/comments/39cere/typescript_vs_flow_results_from_our_investigation/">TypeScript is more powerful, Flow easier to introduce</Link></ListItem>
+              <Layout>
+                <Fill>
+                  <CodePane lang="javascript" source={require("raw!./code/compile-typescript.code")} padding="0 10px 0 0"></CodePane>
+                </Fill>
+                <Fill>
+                  <CodePane lang="javascript" source={require("raw!./code/compile-flow.code")} padding="0 0 0 10px"></CodePane>
+                </Fill>
+              </Layout>
+            </Appear>
+          </List>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">CoffeeScript</Heading>
+          <List>
+            <ListItem>Brings Ruby-like syntax and additional sugar to JS</ListItem>
+            <ListItem>Quite popular for a while, but ES6 is "good enough" for many</ListItem>
+            <Appear fid="1">
+              <CodePane lang="coffeescript" source={require("raw!./code/compile-coffeescript.code")}></CodePane>
+            </Appear>
+          </List>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">LiveScript</Heading>
+          <List>
+            <ListItem>Indirect descendant of CoffeeScript</ListItem>
+            <ListItem>Adds many improvements for functional-style programming</ListItem>
+            <Appear fid="1">
+              <CodePane lang="coffeescript" source={require("raw!./code/compile-livescript.code")}></CodePane>
+            </Appear>
+          </List>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">ClojureScript</Heading>
+          <List>
+            <ListItem>Clojure compiler which targets Javascript</ListItem>
+            <ListItem>Large community with some interesting libraries</ListItem>
+            <ListItem>Fairly widespread production use</ListItem>
+            <Appear fid="1">
+              <CodePane lang="clojure" source={require("raw!./code/compile-clojurescript.code")}></CodePane>
+            </Appear>
+          </List>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Scala.JS</Heading>
+          <List>
+            <ListItem>Scala compiler which targets Javascript</ListItem>
+            <ListItem>Supports all of Scala, integrates with SBT</ListItem>
+            <Appear fid="1">
+              <CodePane lang="scala" source={require("raw!./code/compile-scalajs.code")}></CodePane>
+            </Appear>
+          </List>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">PureScript</Heading>
+          <List>
+            <ListItem>Strongly typed functional language that compiles to JS</ListItem>
+            <ListItem>Inspired by Haskell, but not a port of an existing language</ListItem>
+            <Appear fid="1">
+              <CodePane lang="haskell" source={require("raw!./code/compile-purescript.code")}></CodePane>
+            </Appear>
+          </List>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Elm</Heading>
+          <List>
+            <ListItem>Functional reactive language designed to make writing web apps easier</ListItem>
+            <ListItem>Some interesting features e.g. time travelling debugger</ListItem>
+            <Appear fid="1">
+              <CodePane lang="scala" source={require("raw!./code/compile-elm.code")}></CodePane>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={1} fit caps textColor="black">
+            Package Manangement
+          </Heading>
+          <Heading size={1} fit caps textColor="black">
+            and Build Tools
+          </Heading>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Package Management</Heading>
+          <List>
+            <Appear fid="1">
+              <ListItem>Package managers enable us to manage project dependencies</ListItem>
+              <ListItem><Link href="http://requirejs.org/">RequireJS</Link>/<Link href="http://browserify.org/">Browserify</Link>/<Link href="https://github.com/systemjs">SystemJS</Link>/<Link href="https://github.com/webpack/webpack">Webpack</Link>/ES6 loaders enable us to include dependencies without a mess of &lt;script&gt; tags</ListItem>
+            </Appear>
+            <Appear fid="2">
+              <ListItem><Link href="http://bower.io/">Bower</Link> was the first mainstream Javascript/front-end package manager - packages self-hosted and registered with central DB</ListItem>
+              <ListItem>Trend now moving towards <Link href="https://www.npmjs.com/">npm</Link>, or layers on top, e.g. <Link href="http://jspm.io/">jspm</Link></ListItem>
+              <Image src={images.npm.replace('/','')} width="80%" margin="10px 10% 0 10%"></Image>
+            </Appear>
+          </List>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">Build Tools</Heading>
+          <List>
+            <Appear fid="1">
+              <ListItem>Build tools enable us to define common build tasks for a project</ListItem>
+              <ListItem>e.g. compile CSS/JS, lint JS, run unit tests, minify CSS and JS - typically achieved using plugins</ListItem>
+              <ListItem>Often used in "watch" mode so changes are automatically detected</ListItem>
+            </Appear>
+            <Appear fid="2">
+              <ListItem><Link href="http://gruntjs.com/">Grunt</Link>: uses JSON config files to define build tasks. Biggest ecosystem of plugins, but quite verbose and slow.</ListItem>
+              <ListItem><Link href="http://gruntjs.com/">Gulp</Link>: uses Javascript to define build tasks. Ecosystem not as big yet, but much less config and quicker (uses streaming).</ListItem>
+              <ListItem><Link href="https://github.com/webpack/webpack">Webpack</Link>: module bundler but can do many common build tasks. Often used alongside Gulp. Some cool features e.g. <Link href="https://github.com/gaearon/react-hot-loader">react-hot-loader</Link>.</ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={1} fit caps textColor="black">
+            The future
+          </Heading>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
+          <Heading size={3} textColor="primary">The future</Heading>
+          <List>
+            <Appear fid="1">
+              <ListItem>Javascript will continue to become more pervasive - desktop apps natively (Windows) or using e.g. <Link href="https://github.com/atom/electron">Electron</Link>, mobile apps (React Native, Windows Phone), server side...</ListItem>
+            </Appear>
+            <Appear fid="2">
+              <ListItem>Javascript will continue to evolve - ES7 spec already under development e.g. async/await</ListItem>
+            </Appear>
+            <Appear fid="3">
+              <ListItem>Compile-to-JS languages will continue to become more popular as tooling improves</ListItem>
+            </Appear>
+            <Appear fid="4">
+              <ListItem><Link href="http://asmjs.org/">asm.js</Link> (low level subset of JS) will enable both JS and compiled-to-JS code to perform closer to the level of native code</ListItem>
+            </Appear>
+            <Appear fid="5">
+              <ListItem>There will still be millions of new libraries and frameworks introduced every week :)</ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={1} fit caps textColor="black">
+            Questions?
+          </Heading>
+        </Slide>
+
         <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
           <Heading size={3} textColor="primary">References</Heading>
           <List>
             <ListItem><Link href="https://github.com/lukehoban/es6features">https://github.com/lukehoban/es6features</Link></ListItem>
             <ListItem><Link href="https://github.com/addyosmani/es6-equivalents-in-es5">https://github.com/addyosmani/es6-equivalents-in-es5</Link></ListItem>
             <ListItem><Link href="http://babeljs.io">http://babeljs.io</Link></ListItem>
+            <ListItem><Link href="https://angularjs.org/">https://angularjs.org/</Link></ListItem>
+            <ListItem><Link href="https://facebook.github.io/react/">https://facebook.github.io/react/</Link></ListItem>
           </List>
         </Slide>
       </Deck>
