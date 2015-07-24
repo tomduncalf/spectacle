@@ -3,5 +3,5 @@ function Counter() {
 
     setInterval(() => {
         console.log(this.count++);
-    }, 1000);
+    }, 1000); // this is inherited from calling scope
 }

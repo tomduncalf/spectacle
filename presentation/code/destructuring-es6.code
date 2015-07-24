@@ -1,6 +1,6 @@
 let [a, b, c] = [1, 2, 3];
 // a = 1, b = 2, c = 3
-let {a: first, b: second} = {a: '1', 'b': 2}
-// first = 1, second = 2
+let {a: first, b: second} = {a: '1', b: '2'}
+// first = '1', second = '2'
 let {a, b} = {a: '1', b: '2'}
-// a = 1, b = 2
+// a = '1', b = '2'

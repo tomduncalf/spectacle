@@ -16,7 +16,7 @@ const images = {
 export default class extends React.Component {
   render() {
     return (
-      <Deck transitionDuration={800}>
+      <Deck transitionDuration={500}>
         <Slide transition={["zoom"]} bgColor="primary">
           <Heading size={1} fit caps textColor="black">
             Javascript
@@ -39,13 +39,15 @@ export default class extends React.Component {
         </Slide>
         <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
           <Heading size={3} textColor="primary">Why Care About Javascript?</Heading>
-          <List>
-            <ListItem>Probably the most widely deployed language runtime</ListItem>
-            <ListItem>Has some "quirks" (originally designed in 10 days!) but is actually a fairly good functional + prototypical-OO language</ListItem>
-            <ListItem>The only (real) way to develop interactive web pages</ListItem>
-            <ListItem>Runs client-side and server-side</ListItem>
-            <ListItem>Fast pace of change in the last few years, taking influences from other languages and approaches</ListItem>
-          </List>
+          <Appear fid="1">
+            <List>
+              <ListItem>Probably the most widely deployed language runtime</ListItem>
+              <ListItem>Has some "quirks" (originally designed in 10 days!) but is actually a fairly good functional + prototypical-OO language</ListItem>
+              <ListItem>The only (real) way to develop interactive web pages</ListItem>
+              <ListItem>Runs client-side and server-side</ListItem>
+              <ListItem>Fast pace of change in the last few years, taking influences from other languages and approaches</ListItem>
+            </List>
+          </Appear>
         </Slide>
 
         <Slide transition={["zoom"]} bgColor="primary">
@@ -57,7 +59,7 @@ export default class extends React.Component {
           <Heading size={3} textColor="primary">ECMAScript 6: Intro</Heading>
           <List>
             <ListItem>ES6 is the newest Javascript standard (currently on ES5 - 2009)</ListItem>
-            <ListItem>Also known as "ECMAScript Harmony", "ES2015" or "ES.next"</ListItem>
+            <ListItem>Also known as "ES2015", "ES.next" or "ECMAScript Harmony"</ListItem>
             <ListItem>New features and syntax to make writing complex apps easier (particularly async code and modularity)</ListItem>
             <ListItem>Maintains backwards compatibility (even the bad bits)</ListItem>
             <ListItem>Standardised in June 2015, many features rolling out now</ListItem>
@@ -102,7 +104,7 @@ export default class extends React.Component {
           <Appear fid="1">
             <Heading size={6} textColor="primary">Before (ES5)</Heading>
             <List>
-              <ListItem>No official module system - use IIFEs, or AMD, or CommonJS...</ListItem>
+              <ListItem>No official module system - use objects, or IIFEs, or AMD, or CommonJS...</ListItem>
               <ListItem>Use RequireJS (or nothing!) to handle dependencies</ListItem>
             </List>
           </Appear>
@@ -143,12 +145,15 @@ export default class extends React.Component {
         <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
           <Heading size={3} textColor="primary">ES6: Using it now</Heading>
           <List>
-            <ListItem>Browser support is currently incomplete (end of year?)</ListItem>
-            <ListItem>Can use Babel to compile ES6 into ES5 code as part of build</ListItem>
-            <Image src={images.babel.replace('/','')} width="80%" margin="10px 10% 0 10%"></Image>
-            <ListItem>Supports source maps</ListItem>
-            <ListItem>Can even try out proposed ES7 features</ListItem>
-            <ListItem><Link href="http://babeljs.io">http://babeljs.io</Link></ListItem>
+            <Appear fid="1">
+              <ListItem>Browser support is currently incomplete (end of year?)</ListItem>
+              <ListItem>Can use Babel to compile ES6 into ES5 code as part of build</ListItem>
+              <Image src={images.babel.replace('/','')} width="80%" margin="10px 10% 0 10%"></Image>
+              <ListItem>Supports source maps</ListItem>
+              <ListItem>Can even try out proposed ES7 features</ListItem>
+              <ListItem><Link href="http://babeljs.io">http://babeljs.io</Link></ListItem>
+              <ListItem><Link href="https://chrome.google.com/webstore/detail/scratch-js/alploljligeomonipppgaahpkenfnfkn">ScratchJS</Link> lets you eval ES6 in Chrome devtools</ListItem>
+            </Appear>
           </List>
         </Slide>
 
@@ -206,14 +211,14 @@ export default class extends React.Component {
           </Appear>
           <Appear fid="3">
             <List>
-              <ListItem>Lots of new concepts and syntax (e.g. ng-repeat, not foreach)</ListItem>
-              <ListItem>Hidden complexity and performance issues</ListItem>
-              <ListItem>Shared scope can lead to state scattered all over the app</ListItem>
+              <ListItem>Lots of new concepts and syntax (e.g. ng-repeat, not foreach/map)</ListItem>
+              <ListItem>Hidden complexity and performance issues (e.g. DOM redrawing, watch/digest cycle)</ListItem>
+              <ListItem>Shared $scope can lead to state scattered all over the app</ListItem>
             </List>
           </Appear>
         </Slide>
         <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
-          <Heading size={3} textColor="primary">Frameworks: React</Heading>
+          <Heading size={3} textColor="primary">Frameworks: React hello</Heading>
           <Appear fid="1">
             <List>
               <ListItem>Facebook's library for building UIs (mainly the V in MVC)</ListItem>
@@ -225,8 +230,8 @@ export default class extends React.Component {
               <ListItem>Simple API, less magic</ListItem>
               <ListItem>Use plain Javascript rather than bespoke concepts</ListItem>
               <ListItem>One way data flow, explicit state updates</ListItem>
+              <ListItem>Logic and template live in the same JS file - JSX syntax</ListItem>
               <ListItem>Virtual DOM with diffing</ListItem>
-              <ListItem>Logic and template live in the same JS file - JSX</ListItem>
               <ListItem>Rendering is a pure function of component's state and props</ListItem>
               <ListItem>Not restricted to DOM e.g. <Link href="https://facebook.github.io/react-native/">React Native</Link></ListItem>
             </List>
@@ -234,18 +239,28 @@ export default class extends React.Component {
         </Slide>
         <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
           <Heading size={3} textColor="primary">Frameworks: React</Heading>
-          <CodePane lang="javascript" source={require("raw!./code/framework-react.code")} padding="0 0 10px 0"></CodePane>
+          <CodePane lang="javascript" source={require("raw!./code/framework-react-js.code")} padding="0 0 10px 0"></CodePane>
+          <CodePane lang="javascript" source={require("raw!./code/framework-react-html.code")} padding="0 0 10px 0"></CodePane>
           <Link href="https://jsfiddle.net/6La6fm74/1/">https://jsfiddle.net/6La6fm74/1/</Link>
+          <Appear fid="1">
+            <List>
+              <ListItem>This presentation was made with <Link href="http://facebook.github.io/react/">React</Link> and <Link href="https://github.com/FormidableLabs/spectacle">Spectacle</Link>!</ListItem>
+            </List>
+          </Appear>
         </Slide>
         <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
           <Heading size={3} textColor="primary">Frameworks: Libraries</Heading>
           <List>
-            <ListItem>Trend seems to be somewhat moving away from monolithic frameworks (e.g. Angular) towards smaller libraries</ListItem>
-            <ListItem>Functional programming approaches gaining popularity</ListItem>
-            <ListItem><Link href="https://facebook.github.io/react/">React</Link></ListItem>
-            <ListItem><Link href="https://facebook.github.io/immutable-js/">ImmutableJS</Link> - rich immutable collections API</ListItem>
-            <ListItem><Link href="https://github.com/Reactive-Extensions/RxJS">RxJS</Link>, <Link href="https://baconjs.github.io/">Bacon.js</Link>, <Link href="https://github.com/paldepind/flyd">Flyd</Link> - functional reactive programming</ListItem>
-            <ListItem><Link href="http://ramdajs.com/0.17/index.html">Ramda</Link> - functional programming library</ListItem>
+            <Appear fid="1">
+              <ListItem>Trend seems to be somewhat moving away from monolithic frameworks (e.g. Angular) towards smaller libraries</ListItem>
+              <ListItem>Functional programming approaches gaining popularity</ListItem>
+            </Appear>
+            <Appear fid="2">
+              <ListItem><Link href="https://facebook.github.io/react/">React</Link> with <Link href="https://github.com/gaearon/redux">Redux</Link></ListItem>
+              <ListItem><Link href="https://facebook.github.io/immutable-js/">ImmutableJS</Link> - rich immutable collections API</ListItem>
+              <ListItem><Link href="http://ramdajs.com/0.17/index.html">Ramda</Link> - functional programming library</ListItem>
+              <ListItem><Link href="https://github.com/Reactive-Extensions/RxJS">RxJS</Link>, <Link href="https://baconjs.github.io/">Bacon.js</Link>, <Link href="https://github.com/paldepind/flyd">Flyd</Link>, <Link href="http://cycle.js.org/">Cycle.js</Link> - reactive programming</ListItem>
+            </Appear>
           </List>
         </Slide>
 
@@ -260,7 +275,7 @@ export default class extends React.Component {
             <List>
               <ListItem>Compile-to-JS languages are becoming more popular</ListItem>
               <ListItem>Workflow can be quite smooth with source maps, good build tools</ListItem>
-              <ListItem>Range from supersets of JS with additional features, through ports of existing languages, all the way to entirely new languages</ListItem>
+              <ListItem>Range from supersets of JS adding new features, through ports of existing languages, all the way to entirely new languages</ListItem>
               <ListItem>JavaScript is becoming the "universal runtime"</ListItem>
               <ListItem><Link href="https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-JS">https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-JS</Link></ListItem>
             </List>
@@ -296,7 +311,7 @@ export default class extends React.Component {
           <Heading size={3} textColor="primary">CoffeeScript</Heading>
           <List>
             <ListItem>Brings Ruby-like syntax and additional sugar to JS</ListItem>
-            <ListItem>Quite popular for a while, but ES6 is "good enough" for many</ListItem>
+            <ListItem>Quite popular for a while, but ES6 is now "good enough" for many</ListItem>
             <Appear fid="1">
               <CodePane lang="coffeescript" source={require("raw!./code/compile-coffeescript.code")}></CodePane>
             </Appear>
@@ -346,8 +361,8 @@ export default class extends React.Component {
         <Slide transition={["slide"]} bgColor="secondary" textColor="primary">
           <Heading size={3} textColor="primary">Elm</Heading>
           <List>
-            <ListItem>Functional reactive language designed to make writing web apps easier</ListItem>
-            <ListItem>Some interesting features e.g. time travelling debugger</ListItem>
+            <ListItem>Functional reactive language designed to make writing web apps "easier"</ListItem>
+            <ListItem>Some interesting features e.g. time travelling debugger, compiler to avoid runtime exceptions</ListItem>
             <Appear fid="1">
               <CodePane lang="scala" source={require("raw!./code/compile-elm.code")}></CodePane>
             </Appear>
@@ -387,7 +402,10 @@ export default class extends React.Component {
             <Appear fid="2">
               <ListItem><Link href="http://gruntjs.com/">Grunt</Link>: uses JSON config files to define build tasks. Biggest ecosystem of plugins, but quite verbose and slow.</ListItem>
               <ListItem><Link href="http://gruntjs.com/">Gulp</Link>: uses Javascript to define build tasks. Ecosystem not as big yet, but much less config and quicker (uses streaming).</ListItem>
-              <ListItem><Link href="https://github.com/webpack/webpack">Webpack</Link>: module bundler but can do many common build tasks. Often used alongside Gulp. Some cool features e.g. <Link href="https://github.com/gaearon/react-hot-loader">react-hot-loader</Link>.</ListItem>
+              <ListItem><Link href="https://github.com/webpack/webpack">Webpack</Link>: module bundler but can do many common build tasks. Often used alongside Gulp. Cool features e.g. <Link href="https://github.com/gaearon/react-hot-loader">react-hot-loader</Link>.</ListItem>
+            </Appear>
+            <Appear fid="3">
+              <ListItem><Link href="http://yeoman.io/">Yeoman</Link> is a good way to set up a project from a template, lots of pre-built templates available</ListItem>
             </Appear>
           </List>
         </Slide>
@@ -401,16 +419,16 @@ export default class extends React.Component {
           <Heading size={3} textColor="primary">The future</Heading>
           <List>
             <Appear fid="1">
-              <ListItem>Javascript will continue to become more pervasive - desktop apps natively (Windows) or using e.g. <Link href="https://github.com/atom/electron">Electron</Link>, mobile apps (React Native, Windows Phone), server side...</ListItem>
+              <ListItem>Javascript will continue to become more pervasive - desktop apps natively (Windows) or using e.g. <Link href="https://github.com/atom/electron">Electron</Link> (e.g. Atom, Slack), mobile apps (React Native, Cordova, Windows Phone), server side...</ListItem>
             </Appear>
             <Appear fid="2">
-              <ListItem>Javascript will continue to evolve - ES7 spec already under development e.g. async/await</ListItem>
+              <ListItem>Javascript will continue to evolve - ES7 spec already under development e.g. async/await, observable objects, decorators</ListItem>
             </Appear>
             <Appear fid="3">
-              <ListItem>Compile-to-JS languages will continue to become more popular as tooling improves</ListItem>
+              <ListItem>Compile-to-JS languages will continue to become more popular as tooling improves and compelling use cases emerge</ListItem>
             </Appear>
             <Appear fid="4">
-              <ListItem><Link href="http://asmjs.org/">asm.js</Link> (low level subset of JS) will enable both JS and compiled-to-JS code to perform closer to the level of native code</ListItem>
+              <ListItem><Link href="http://asmjs.org/">asm.js</Link> (low level, highly optimizable JS subset) will enable JS and compiled-to-JS code to perform closer to the level of native code</ListItem>
             </Appear>
             <Appear fid="5">
               <ListItem>There will still be millions of new libraries and frameworks introduced every week :)</ListItem>

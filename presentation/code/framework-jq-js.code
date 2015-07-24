@@ -1,9 +1,13 @@
 let names = ['Tom', 'Dick', 'Harry'];
 
 $('#search').onChange(search => {
+  let filteredNames = names.filter(n =>
+      n.indexOf(search) > -1);
+
   $('#names').html(
-    names.filter(n => n.indexOf(search) > -1)
-         .map(name => '<li>' + name + '</li>')
+    filteredNames
+         .map(name =>
+             '<li>' + name + '</li>')
          .join()
   );
 });

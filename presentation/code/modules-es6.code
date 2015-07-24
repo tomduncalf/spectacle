@@ -1,8 +1,9 @@
 // lib/math.js
-export function sum(x, y) {
+export function sum(x, y) { // visible from outside
   return x + y;
 }
-export var pi = 3.141593;
+export var pi = 3.141593; // visible from outside
+var secret = 'Secret'; // not visible from outside
 
 // app.js
 import * as math from "lib/math";
